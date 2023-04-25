@@ -60,6 +60,12 @@ class CheckPost
             return;
         }
 
+        /* using recipientUsers to detect if the discussion is private
+        "$post->discussion->is_private" return false when the user just creates a private discussion, so is not used */
+        if ($post->discussion->recipientUsers->isNotEmpty()) {
+            return;
+        }
+
         if ($this->checkContent($post->content)) {
             $this->flagPost($post);
 
