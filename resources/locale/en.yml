@@ -4,10 +4,12 @@ fof-filter:
         flag_message: Contained blocked strings
     admin:
         title: Filter
-        bad_words_help: Input text or words to filter, one per line. If the content of a user’s post contains a string you want to filter, it will be flagged for approval. Resistant against 133t.
+        bad_words_help_global: Filter applys globally across public and private discussions. Input text or words to filter, one per line. If the content of a user’s post contains a string you want to filter, it will be flagged for approval. Resistant against 133t.
+        bad_words_help_excludePrivate: Filter applys on  public discussions only. Input text or words to filter, one per line. If the content of a user’s post contains a string you want to filter, it will be flagged for approval. Resistant against 133t.
         help2: Interval in minutes in which posts from the same user in the same discussion will be automatically merged.
         email_help: Body of flagged email. Accepts html or plaintext.
-        filter_label: Strings to filter
+        filter_label_global: Global filter
+        filter_label_excludePrivate: Exclude Private filter
         countLabel: Censor Tolorance
         cooldownLabel: Merge Post Cooldown
         auto_merge_title: Auto merge

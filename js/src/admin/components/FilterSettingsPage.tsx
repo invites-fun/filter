@@ -17,17 +17,17 @@ export default class FilterSettingsPage extends ExtensionPage {
               type: 'textarea',
               rows: 6,
               setting: 'fof-filter.words-global',
-              label: app.translator.trans('fof-filter.admin.filter_label'),
+              label: app.translator.trans('fof-filter.admin.filter_label_global'),
               placeholder: app.translator.trans('fof-filter.admin.input.placeholder'),
-              help: app.translator.trans('fof-filter.admin.bad_words_help'),
+              help: app.translator.trans('fof-filter.admin.bad_words_help_global'),
             })}
             {this.buildSettingComponent({
               type: 'textarea',
               rows: 6,
               setting: 'fof-filter.words-excludePrivate',
-              label: app.translator.trans('fof-filter.admin.filter_label'),
+              label: app.translator.trans('fof-filter.admin.filter_label_excludePrivate'),
               placeholder: app.translator.trans('fof-filter.admin.input.placeholder'),
-              help: app.translator.trans('fof-filter.admin.bad_words_help'),
+              help: app.translator.trans('fof-filter.admin.bad_words_help_excludePrivate'),
             })}
             <hr />
             <h2>{app.translator.trans('fof-filter.admin.auto_merge_title')}</h2>
