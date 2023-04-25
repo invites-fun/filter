@@ -16,7 +16,15 @@ export default class FilterSettingsPage extends ExtensionPage {
             {this.buildSettingComponent({
               type: 'textarea',
               rows: 6,
-              setting: 'fof-filter.words',
+              setting: 'fof-filter.words-global',
+              label: app.translator.trans('fof-filter.admin.filter_label'),
+              placeholder: app.translator.trans('fof-filter.admin.input.placeholder'),
+              help: app.translator.trans('fof-filter.admin.bad_words_help'),
+            })}
+            {this.buildSettingComponent({
+              type: 'textarea',
+              rows: 6,
+              setting: 'fof-filter.words-excludePrivate',
               label: app.translator.trans('fof-filter.admin.filter_label'),
               placeholder: app.translator.trans('fof-filter.admin.input.placeholder'),
               help: app.translator.trans('fof-filter.admin.bad_words_help'),

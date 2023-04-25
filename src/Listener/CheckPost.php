@@ -60,25 +60,33 @@ class CheckPost
             return;
         }
 
+        if ($this->checkContent($post->content, 'global')) {
+            $this->flagPost($post);
+    
+            if ((bool) $this->settings->get('fof-filter.emailWhenFlagged') && $post->emailed == 0) {
+                $this->sendEmail($post);
+            }
+        }
+
         /* using recipientUsers to detect if the discussion is private
         "$post->discussion->is_private" return false when the user just creates a private discussion, so is not used */
         if ($post->discussion->recipientUsers->isNotEmpty()) {
             return;
         }
 
-        if ($this->checkContent($post->content)) {
+        if ($this->checkContent($post->content, 'excludePrivate')) {
             $this->flagPost($post);
-
+    
             if ((bool) $this->settings->get('fof-filter.emailWhenFlagged') && $post->emailed == 0) {
                 $this->sendEmail($post);
             }
         }
     }
 
-    public function checkContent($postContent): bool
+    public function checkContent($postContent, $censorType): bool
     {
-        $censors = json_decode($this->settings->get('fof-filter.censors'), true);
-
+        $censors = json_decode($this->settings->get('fof-filter.censors-' . $censorType), true);
+    
         $isExplicit = false;
 
         preg_replace_callback(
