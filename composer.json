@@ -14,11 +14,15 @@
         {
             "name": "Katos",
             "email": "katos@flarum.org"
+        },
+        {
+            "name": "huoxin",
+            "email": ""
         }
     ],
     "support": {
-        "issues": "https://github.com/friendsofflarum/filter/issues",
-        "source": "https://github.com/friendsofflarum/filter",
+        "issues": "https://github.com/huoxin233/filter/issues",
+        "source": "https://github.com/huoxin233/filter",
         "forum": "https://discuss.flarum.org/d/5131"
     },
     "homepage": "https://friendsofflarum.org",
