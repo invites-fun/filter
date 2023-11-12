@@ -17,6 +17,10 @@ fof-filter:
     filter_label_excludePrivate: 自定义敏感词词库（不包含私聊）
     help: '请输入要过滤的敏感词，用 半角逗号+空格 分隔。当用户发表的帖子内容包含敏感词时，自动送入审核列表，审核通过前，该贴仅管理员和其作者可见。'
     help2: 在冷却时间内，用户在同一主题下的多次回复将被合并为一个帖子。此设置全局有效，与帖子内容是否含有敏感词无关。
+    only_op_see_not_check: '仅楼主可见 区域内容不参与审核'
+    only_op_see_not_check_help: 此功能仅在安装 仅楼主可见 插件时有效
+    edit_check_passed_unset_approved: 编辑后如无命中则自动通过
+    unset_approved_if_delete_flag: 如审核通过则清除小黑屋
     input:
       email_body: 正文
       email_label: 邮件通知设置

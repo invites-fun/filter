@@ -29,6 +29,22 @@ export default class FilterSettingsPage extends ExtensionPage {
               placeholder: app.translator.trans('fof-filter.admin.input.placeholder'),
               help: app.translator.trans('fof-filter.admin.bad_words_help_excludePrivate'),
             })}
+            {this.buildSettingComponent({
+              type: 'boolean',
+              setting: 'fof-filter.only-op-see-not-check',
+              label: app.translator.trans('fof-filter.admin.only_op_see_not_check'),
+              help: app.translator.trans('fof-filter.admin.only_op_see_not_check_help'),
+            })}
+            {this.buildSettingComponent({
+              type: 'boolean',
+              setting: 'fof-filter.edit-check-passed-unset-approved',
+              label: app.translator.trans('fof-filter.admin.edit_check_passed_unset_approved'),
+            })}
+            {this.buildSettingComponent({
+              type: 'boolean',
+              setting: 'fof-filter.unset-approved-if-delete-flag',
+              label: app.translator.trans('fof-filter.admin.unset_approved_if_delete_flag'),
+            })}
             <hr />
             <h2>{app.translator.trans('fof-filter.admin.auto_merge_title')}</h2>
             {this.buildSettingComponent({

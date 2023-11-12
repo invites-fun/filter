@@ -7,6 +7,10 @@ fof-filter:
         bad_words_help_global: Filter applys globally across public and private discussions. Input text or words to filter, one per line. If the content of a user’s post contains a string you want to filter, it will be flagged for approval. Resistant against 133t.
         bad_words_help_excludePrivate: Filter applys on  public discussions only. Input text or words to filter, one per line. If the content of a user’s post contains a string you want to filter, it will be flagged for approval. Resistant against 133t.
         help2: Interval in minutes in which posts from the same user in the same discussion will be automatically merged.
+        only_op_see_not_check: '"Visible To OP Only" Regional content does not participate in the review'
+        only_op_see_not_check_help: This feature only works when the "Visible To OP Only" plugin is installed
+        edit_check_passed_unset_approved: If there are no hits after editing, the review will be cancelled.
+        unset_approved_if_delete_flag: Clear Flag if approved
         email_help: Body of flagged email. Accepts html or plaintext.
         filter_label_global: Global filter
         filter_label_excludePrivate: Exclude Private filter
@@ -17,7 +21,7 @@ fof-filter:
             placeholder: Strings to be filtered
             filter_title: Strings to filter
             email_label: Email Settings
-            switch: 
+            switch:
               email: Email user when post is filtered
               merge: Auto merge double posts
             email_subject: Subject
@@ -31,7 +35,7 @@ fof-filter:
             default_subject: Regarding Your Recent Post
             default_text: |
                 Thank you for posting! Unfortunately, your post was removed because it contained something we don't want to see on our forums.
-                
-                If you believe this was an error, you are in luck, each removed post is reviewed by our moderators. If they find that this was wrongfully removed, they will restore it.                
-                
+
+                If you believe this was an error, you are in luck, each removed post is reviewed by our moderators. If they find that this was wrongfully removed, they will restore it.
+
                 Thank you for your understanding.

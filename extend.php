@@ -40,5 +40,8 @@ return [
     (new Extend\Settings())
         ->default('fof-filter.autoMergePosts', false)
         ->default('fof-filter.cooldown', 15)
-        ->default('fof-filter.emailWhenFlagged', false),
+        ->default('fof-filter.emailWhenFlagged', false)
+        ->default('fof-filter.only-op-see-not-check', false)
+        ->default('fof-filter.edit-check-passed-unset-approved', false)
+        ->default('fof-filter.unset-approved-if-delete-flag', false),
 ];
