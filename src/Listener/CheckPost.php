@@ -65,7 +65,7 @@ class CheckPost
             return;
         }
 
-        if ($this->checkContent($post->content, 'global')) {
+        if ($this->checkContent($post->content, 'global') || $this->checkContent($post->discussion->title, 'global')) {
             $this->flagPost($post);
 
             if ((bool)$this->settings->get('fof-filter.emailWhenFlagged') && $post->emailed == 0) {
@@ -82,7 +82,7 @@ class CheckPost
         }
 
 
-        if ($this->checkContent($post->content, 'excludePrivate')) {
+        if ($this->checkContent($post->content, 'excludePrivate') || $this->checkContent($post->discussion->title, 'excludePrivate')) {
             $this->flagPost($post);
 
             if ((bool)$this->settings->get('fof-filter.emailWhenFlagged') && $post->emailed == 0) {
