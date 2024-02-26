@@ -15,6 +15,7 @@ use Flarum\Flags\Event\Created;
 use Flarum\Flags\Flag;
 use Flarum\Post\Event\Saving;
 use Flarum\Post\Post;
+use Illuminate\Support\Arr;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\Guest;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -60,17 +61,20 @@ class CheckPost
     public function handle(Saving $event)
     {
         $post = $event->post;
+        $attributes = Arr::get($event->data, 'attributes', []);
 
-        if ($event->actor->can('bypassFoFFilter', $post->discussion)) {
+        if (($post->auto_mod && !isset($attributes["content"])) || $event->actor->can('bypassFoFFilter', $post->discussion)) {
             return;
         }
 
-        if ($this->checkContent($post->content, 'global') || $this->checkContent($post->discussion->title, 'global')) {
+        $flag = false;
+        if ($this->checkContent($post->content, 'global') || $this->checkContent($attributes["title"], 'global')) {
             $this->flagPost($post);
 
             if ((bool)$this->settings->get('fof-filter.emailWhenFlagged') && $post->emailed == 0) {
                 $this->sendEmail($post);
             }
+            $flag = true;
         } elseif (!$post->is_approved) {
             $this->unsetFlagPost($post);
         }
@@ -82,13 +86,13 @@ class CheckPost
         }
 
 
-        if ($this->checkContent($post->content, 'excludePrivate') || $this->checkContent($post->discussion->title, 'excludePrivate')) {
+        if ($this->checkContent($post->content, 'excludePrivate') || $this->checkContent($attributes["title"], 'excludePrivate')) {
             $this->flagPost($post);
 
             if ((bool)$this->settings->get('fof-filter.emailWhenFlagged') && $post->emailed == 0) {
                 $this->sendEmail($post);
             }
-        } elseif (!$post->is_approved) {
+        } elseif (!$post->is_approved && !$flag) {
             $this->unsetFlagPost($post);
         }
     }
